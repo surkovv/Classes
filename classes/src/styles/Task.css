@@ -1,0 +1,32 @@
+.task {
+    display: flex;
+    flex-direction: column;
+    height: 250px;
+    outline: 2px solid black;
+    border-radius: 10px;
+    margin: 10px
+}
+
+.task_title {
+    text-align: center;
+    color: #630A10;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.task_description {
+    margin: 10px;
+    font-size: 18px;
+}
+
+.task_result {
+    margin-top: auto;
+    padding: 5px;
+    background-color: #C4C4C4;
+}
+
+.task_result_text {
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Courier New', Courier, monospace;
+}

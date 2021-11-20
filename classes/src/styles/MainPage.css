@@ -1,0 +1,21 @@
+.main_page {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+}
+
+.mp_title {
+    grid-column: 3;
+    margin: 20px;
+    color: #630A10;
+    font-size: 40px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.courses_holder {
+    grid-column: 3 / 11;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
+}

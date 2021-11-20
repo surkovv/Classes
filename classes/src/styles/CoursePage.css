@@ -1,0 +1,49 @@
+.course_page {
+    display: grid;
+    grid-template-columns: 1fr 7fr 4fr;
+}
+
+.left_side {
+    grid-column: 2;
+    margin: 20px;
+    padding-right: 50px;
+}
+
+.course_name {
+    font-size: 40px;
+    font-weight: bold;
+    color: #630A10;
+}
+
+.posts_holder {
+    margin-top: 15px;
+}
+
+.right_side {
+    grid-column: 3;
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+    padding-top: 40px;
+    background-color: #FACE7F;
+    padding-bottom: 50px;
+}
+
+.student_img {
+    grid-column: 2;
+    width: 100%;
+}
+
+.student_name {
+    grid-column: 2;
+    color: #630A11;
+    font-size: 32px;
+    justify-self: center;
+    margin: 20px;
+}
+
+.right_side_item {
+    margin-left: 10px;
+    margin: 5px;
+    grid-column: 2;
+    font-size: 24px;
+}

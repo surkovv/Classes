@@ -1,0 +1,19 @@
+.post {
+    margin-bottom: 25px;
+}
+
+.post_title {
+    font-size: 44px;
+    color: #630A11;
+}
+
+.post_body {
+    font-size: 25px;
+    margin-left: 10px;
+}
+hr {
+    margin-top: 50px;
+    border:none;
+    border-top:2px dashed #630A11;
+    width:90%;
+}

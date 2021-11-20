@@ -1,0 +1,37 @@
+.header {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    background-color: #911F27;
+    align-items: center;
+    margin: 0;
+}
+
+.title {
+    grid-column: 2;
+    font-size: 36px;
+    color: white;
+}
+
+.sign_up {
+    grid-column: 10 / 12;
+    font-size: 24px;
+    color: #FCF0C8;
+}
+
+.sign_in {
+    grid-column: 12 / 13;
+    font-size: 24px;
+    color: #FCF0C8;
+}
+
+.header_name {
+    grid-column: 10 / 12;
+    font-size: 24px;
+    color: #FCF0C8;
+}
+
+.exit {
+    grid-column: 12 / 13;
+    font-size: 24px;
+    color: #FCF0C8;
+}
