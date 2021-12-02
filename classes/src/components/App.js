@@ -59,7 +59,7 @@ const settings_info = {
 function App(){
     return (
         <div>
-        <RegistrationPage></RegistrationPage>
+            <MainPage info={{name:null}}></MainPage>
         </div>
     )
 }
