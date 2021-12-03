@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import Header from "./Header";
 import "../styles/MainPage.css"
 import CourseCard from "./CourseCard";
+import axios from "axios";
 
 const courses = [
     {name: 'Школа 100500. Олимпиадная информатика', description: 'Описание'},
@@ -11,6 +12,18 @@ const courses = [
 ]
 
 function MainPage({info}) {
+    const [courses, setCourses] = useState([])
+
+    useEffect(() => {
+        axios({
+            method: "GET",
+            url: "http://localhost:8000/api/courses/"
+        }).then(response => {
+            console.log(response)
+            setCourses(response.data.courses)
+        })
+    }, [])
+
     return <div>
         <Header name={info.name}/>
         <div className="main_page">

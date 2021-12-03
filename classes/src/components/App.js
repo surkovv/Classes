@@ -1,9 +1,13 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import {Routes, Route, Link} from 'react-router-dom'
+import axios from 'axios';
+import '../styles/App.css'
 import CoursePage from './CoursePage';
 import MainPage from './MainPage';
 import TasksPage from './TasksPage';
 import SettingsPage from './SettingsPage';
 import RegistrationPage from './RegistrationPage';
+
 
 const cp_info = {
     student_name: 'Вася Пупкин', 
@@ -57,10 +61,25 @@ const settings_info = {
 }
 
 function App(){
+
+    const [name, setName] = useState(null)
+
+    useEffect(() => {
+        axios({
+            method: "GET",
+            url: "http://localhost:8000/api/current_user/"
+        }).then(response => {
+            console.log(response)
+            setName(response.data.name)
+        })
+    }, [])
     return (
-        <div>
-            <MainPage info={{name:null}}></MainPage>
-        </div>
+
+        <Routes>
+            <Route path='/' element={<MainPage info={{name:name}}/>} />
+            <Route path='/settings' element={<SettingsPage info={{name:name}}/>}/>
+            <Route path='/courses/:id' element={<CoursePage info={{name:name}}/>}/>
+        </Routes>
     )
 }
 

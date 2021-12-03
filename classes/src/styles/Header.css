@@ -1,7 +1,7 @@
 .header {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    background-color: #911F27;
+    background-color: #911f27;
     align-items: center;
     margin: 0;
 }
@@ -10,6 +10,7 @@
     grid-column: 2;
     font-size: 36px;
     color: white;
+    text-decoration: none;
 }
 
 .sign_up {
@@ -28,6 +29,14 @@
     grid-column: 10 / 12;
     font-size: 24px;
     color: #FCF0C8;
+}
+
+.header_link {
+    text-decoration: none;
+}
+
+.header_link:hover {
+    text-decoration: underline;
 }
 
 .exit {
