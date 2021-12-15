@@ -4,13 +4,6 @@ import "../styles/MainPage.css"
 import CourseCard from "./CourseCard";
 import axios from "axios";
 
-const courses = [
-    {name: 'Школа 100500. Олимпиадная информатика', description: 'Описание'},
-    {name: 'Кружок в Белгороде', description: 'Описание'},
-    {name: 'PlaceHolder 1', description: 'Описание'},
-    {name: 'PlaceHolder 2', description: 'Описание'}
-]
-
 function MainPage({info}) {
     const [courses, setCourses] = useState([])
 

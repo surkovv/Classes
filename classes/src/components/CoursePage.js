@@ -1,6 +1,6 @@
 import React from "react";
 import {useState, useEffect} from 'react'
-import {useParams} from 'react-router-dom'
+import {useParams, Link} from 'react-router-dom'
 import Header from "./Header";
 import Post from "./Post";
 import "../styles/CoursePage.css"
@@ -43,7 +43,7 @@ function CoursePage({info}) {
             <div className='right_side'>
                 <img className='student_img' src={prefix+course.img_url} />
                 <p className='student_name'>{info.name}</p>
-                <p className='right_side_item'>Задания</p>
+                <Link to={`/courses/${id}/tasks`} className='right_side_item'>Задания</Link>
                 <p className='right_side_item'>Общая таблица</p>
                 <p className='right_side_item'>Мои настройки</p>
             </div>

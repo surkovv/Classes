@@ -6,7 +6,7 @@ function Task({info}) {
         <p className='task_title'>{info.title}</p>
         <p className='task_description'>{info.description}</p>
         <div className='task_result'>
-        <p className='task_result_text'>{info.result}</p>
+        <p className='task_result_text'>100%</p>
         </div>
     </div>
 }
