@@ -8,6 +8,8 @@ import TasksPage from './TasksPage';
 import SettingsPage from './SettingsPage';
 import Login from './Login'
 import Register from "./Register";
+import {backend} from "../config"
+
 
 function App(){
     const [name, setName] = useState(null)
@@ -16,7 +18,7 @@ function App(){
         if (!window.localStorage.getItem('ACCESS')) {
             return;
         }
-        axios.get("http://localhost:8000/api/current_user/", {
+        axios.get(backend + "api/current_user/", {
             "headers": {
                 "Authorization": `Bearer ${window.localStorage.getItem('ACCESS')}`
             }

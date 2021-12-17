@@ -5,6 +5,7 @@ import "../styles/TasksPage.css"
 import "../styles/MainPage.css"
 import {useParams} from "react-router-dom";
 import axios from "axios";
+import {backend} from "../config";
 
 function TasksPage({info}) {
     /* info = {
@@ -26,7 +27,7 @@ function TasksPage({info}) {
     useEffect(() => {
         axios({
             method: "GET",
-            url: "http://localhost:8000/api/course/tasks/?id=" + id
+            url: backend+"api/course/tasks/?id=" + id
         }).then(response => {
             setCourse(response.data['course'])
             setTasks(response.data['tasks'])

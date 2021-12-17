@@ -5,6 +5,7 @@ import {Setting, PasswordSetting} from "./Setting"
 import "../styles/Button.css"
 import "../styles/MainPage.css"
 import "../styles/Forms.css"
+import {backend} from "../config";
 
 function Register() {
     const navigate = useNavigate()
@@ -48,7 +49,7 @@ function Register() {
             return
         }
 
-        axios.post('http://localhost:8000/api/register/', formData).then(response => {
+        axios.post(backend+'api/register/', formData).then(response => {
             navigate("/", {replace: true});
             window.location.reload();
         }).catch(error => {

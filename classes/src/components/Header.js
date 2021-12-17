@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import "../styles/Header.css"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import {backend} from "../config";
 
 function Header({name}) {
     const navigate = useNavigate()
@@ -10,7 +11,7 @@ function Header({name}) {
         if (!window.localStorage.getItem('ACCESS')) {
             return;
         }
-        axios.post("http://localhost:8000/api/logout/", {
+        axios.post(backend + "api/logout/", {
             "headers": {
                 "Authorization": `Bearer ${window.localStorage.getItem('ACCESS')}`
             },

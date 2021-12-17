@@ -3,6 +3,7 @@ import Header from "./Header";
 import "../styles/MainPage.css"
 import CourseCard from "./CourseCard";
 import axios from "axios";
+import {backend} from "../config";
 
 function MainPage({info}) {
     const [courses, setCourses] = useState([])
@@ -10,7 +11,7 @@ function MainPage({info}) {
     useEffect(() => {
         axios({
             method: "GET",
-            url: "http://localhost:8000/api/courses/"
+            url: backend + "api/courses/"
         }).then(response => {
             setCourses(response.data.courses)
         })

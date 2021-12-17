@@ -5,6 +5,7 @@ import Header from "./Header";
 import Post from "./Post";
 import "../styles/CoursePage.css"
 import axios from "axios";
+import {backend} from "../config";
 
 const prefix='http://localhost:8000'
 
@@ -27,7 +28,7 @@ function CoursePage({info}) {
     useEffect(() => {
         axios({
             method: "GET",
-            url: "http://localhost:8000/api/course/?id=" + id,
+            url: backend + "api/course/?id=" + id,
             headers:
             !no_authorization ? {
                 "Authorization": `Bearer ${window.localStorage.getItem('ACCESS')}`
@@ -39,7 +40,7 @@ function CoursePage({info}) {
         }).catch(error => {
             axios({
                 method: "GET",
-                url: "http://localhost:8000/api/course/?id=" + id,
+                url: backend + "/api/course/?id=" + id,
             }).then(response => {
                 setCourse(response.data['course'])
                 setPosts(response.data['entries'])

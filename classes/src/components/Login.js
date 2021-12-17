@@ -5,6 +5,7 @@ import {Setting, PasswordSetting} from "./Setting"
 import "../styles/Button.css"
 import "../styles/MainPage.css"
 import "../styles/Forms.css"
+import {backend} from "../config";
 
 function Login() {
     const navigate = useNavigate()
@@ -29,7 +30,7 @@ function Login() {
         e.preventDefault()
         console.log(formData)
 
-        axios.post('http://localhost:8000/api/token/', {
+        axios.post(backend + 'api/token/', {
             username: formData.username,
             password: formData.password
         }).then(response => {
