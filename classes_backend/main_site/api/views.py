@@ -83,6 +83,8 @@ class TasksView(APIView):
 
 class CurrentUser(APIView):
     def get(self, request):
+        if request.user.is_anonymous:
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
         serializer = UserSerializer(request.user)
         return Response(serializer.data)
 
