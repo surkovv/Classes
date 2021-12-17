@@ -1,11 +1,13 @@
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status, permissions
 
 from django.contrib.auth.models import User
 from rest_framework import viewsets, mixins
-from ..models import Course, CourseEntry, Task
+from rest_framework_simplejwt.tokens import RefreshToken
+
+from ..models import Course, CourseEntry, Task, StudentInCourse
 from .serializers import UserSerializer
 
 
@@ -28,6 +30,7 @@ class CoursesListView(APIView):
 class CourseView(APIView):
 
     def get(self, request, *args, **kwargs):
+        print('kek')
         id = request.GET['id']
         course = Course.objects.get(id=id)
         data = {
@@ -45,6 +48,12 @@ class CourseView(APIView):
                 } for entry in CourseEntry.objects.filter(course__exact=id)
             ]
         }
+        if request.user.is_anonymous:
+            data['entries'] = ['Unauthorized']
+        else:
+            student_in_course = StudentInCourse.objects.filter(course_rel_id=id, student_rel_id=request.user.id)
+            if len(student_in_course) == 0:
+                data['entries'] = ['No access']
         return Response(data)
 
 
@@ -64,7 +73,8 @@ class TasksView(APIView):
             'tasks': [
                 {
                     'title': task.title,
-                    'description': task.description
+                    'description': task.description,
+                    'mark': task.mark
                 } for task in Task.objects.filter(course__exact=id)
             ]
         }
@@ -90,8 +100,26 @@ class UserViewSet(viewsets.GenericViewSet, mixins.CreateModelMixin):
 class Registration(APIView):
 
     def post(self, request):
-        user = User.objects.create(**request.data)
-        user.set_password(request.data['password'])
-        user.save()
-
+        try:
+            user = User.objects.create(**request.data)
+            user.set_password(request.data['password'])
+            user.save()
+        except:
+            return Response(status=status.HTTP_400_BAD_REQUEST, data='User with the same username already exists')
         return Response(status=status.HTTP_201_CREATED)
+
+
+class LogoutView(APIView):
+
+    def post(self, request):
+        try:
+            refresh_token = request.data["refresh_token"]
+            print(refresh_token)
+            token = RefreshToken(refresh_token)
+            print(refresh_token)
+            token.blacklist()
+
+            return Response(status=status.HTTP_205_RESET_CONTENT)
+        except Exception as e:
+            print(e)
+            return Response(status=status.HTTP_400_BAD_REQUEST)

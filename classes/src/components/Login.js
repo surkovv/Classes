@@ -1,6 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import {Setting, PasswordSetting} from "./Setting"
+import "../styles/Button.css"
+import "../styles/MainPage.css"
+import "../styles/Forms.css"
 
 function Login() {
     const navigate = useNavigate()
@@ -11,6 +15,7 @@ function Login() {
     })
 
     const [formData, updateFormData] = useState(initialFormData)
+    const [errorMessage, updateErrorMessage] = useState("");
 
     const handleChange = (e) => {
         console.log(e.target.name)
@@ -28,23 +33,31 @@ function Login() {
             username: formData.username,
             password: formData.password
         }).then(response => {
-            console.log(response)
             if (response.status !== 200) {
                 console.log(response.data)
                 return
             }
-            window.localStorage.setItem('ACCESS', response.data.access);
-            window.localStorage.setItem('REFRESH', response.data.refresh);
 
             navigate("/", {replace: true});
             window.location.reload();
+
+            window.localStorage.setItem('ACCESS', response.data.access);
+            window.localStorage.setItem('REFRESH', response.data.refresh);
+        }).catch(error => {
+            if (error.response.statusText === 'Unauthorized') {
+                updateErrorMessage('Неправильный логин или пароль')
+            }
         })
     }
 
-    return <div>
-        <input id="username" type="text" onChange={handleChange} name="username"/>
-        <input id="password" type="password" onChange={handleChange} name="password"/>
-        <input id="submit" type="submit" value="Войти" onClick={handleClick}/>
+    return <div className="form_page">
+        <div className="form">
+            <p className="mp_title">Авторизация</p>
+            <Setting name="Логин" onChange={handleChange} id="username"/>
+            <PasswordSetting name="Пароль" id="password" onChange={handleChange}/>
+            <p className="error">{errorMessage}</p>
+            <div className="button" onClick={handleClick}>Войти</div>
+        </div>
     </div>
 }
 

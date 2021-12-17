@@ -13,8 +13,7 @@ function App(){
     const [name, setName] = useState(null)
 
     useEffect(() => {
-        console.log(window.location.access)
-        if (!window.localStorage.ACCESS) {
+        if (!window.localStorage.getItem('ACCESS')) {
             return;
         }
         axios.get("http://localhost:8000/api/current_user/", {
@@ -22,10 +21,9 @@ function App(){
                 "Authorization": `Bearer ${window.localStorage.getItem('ACCESS')}`
             }
         }).then(response => {
-            console.log(response)
             if (response.data.id !== null)
                 setName(response.data.first_name + " " + response.data.last_name)
-        })
+        }).catch(error => {})
     }, [])
     return (
 

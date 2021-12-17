@@ -12,7 +12,6 @@ function MainPage({info}) {
             method: "GET",
             url: "http://localhost:8000/api/courses/"
         }).then(response => {
-            console.log(response)
             setCourses(response.data.courses)
         })
     }, [])
@@ -22,7 +21,7 @@ function MainPage({info}) {
         <div className="main_page">
             <p className='mp_title'>Курсы</p>
             <div className='courses_holder'>
-                {courses.map((item)=><CourseCard info={item} />)}
+                {courses.map((item)=><CourseCard key={item.id} info={item} />)}
             </div>
             <p className='mp_title'>Дополнительная информация</p>
         </div>

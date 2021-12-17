@@ -23,11 +23,11 @@ function SettingsPage({info}) {
                     <Setting name='E-mail' filler={info.e_mail}/>
                     <Setting name='Codeforces handle' filler={info.cf}/>
                     <PasswordSetting name='Пароль'/>
-                    <a className='button button_left'>Сохранить</a>
+                    <p className='button button_left'>Сохранить</p>
                 </div>
             </div>
             <div className='right_side_settings'>
-                <img className='setting_img' src={info.img}/>
+                <img className='setting_img' src={info.img} alt={info.name}/>
                 <div className='button_right button'>Изменить фото</div>
             </div>
         </div>

@@ -24,6 +24,7 @@ class StudentInCourse(models.Model):
 class Task(models.Model):
     title = models.CharField(max_length=255, verbose_name='Название задания')
     description = models.TextField(verbose_name='Описание')
+    mark = models.TextField(verbose_name='Оценка', default='0')
     course = models.ForeignKey('Course', on_delete=models.CASCADE)
 
     def __str__(self):

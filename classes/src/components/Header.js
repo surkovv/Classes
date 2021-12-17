@@ -3,22 +3,29 @@ import { Link } from 'react-router-dom';
 import "../styles/Header.css"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import useForceUpdate from "./ApiQuery"
 
 function Header({name}) {
     const navigate = useNavigate()
-    const forceUpdate = useForceUpdate()
     function Logout() {
-        if (!window.localStorage.ACCESS) {
+        if (!window.localStorage.getItem('ACCESS')) {
             return;
         }
-        window.localStorage.setItem('ACCESS', null);
-        window.localStorage.setItem('REFRESH', null);
-        navigate('/')
-        window.location.reload();
+        axios.post("http://localhost:8000/api/logout/", {
+            "headers": {
+                "Authorization": `Bearer ${window.localStorage.getItem('ACCESS')}`
+            },
+            "refresh_token": window.localStorage.getItem('REFRESH')
+        }).then(response => {
+            window.localStorage.setItem('ACCESS', null);
+            window.localStorage.setItem('REFRESH', null);
+
+            navigate('/')
+            window.location.reload()
+        }).catch(error => {
+            console.log(error.response)
+        })
     }
 
-    console.log(name)
     if (name === null) {
         return <div className="header">
             <Link className='title' to='/'>Classes</Link>
