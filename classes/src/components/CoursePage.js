@@ -7,8 +7,6 @@ import "../styles/CoursePage.css"
 import axios from "axios";
 import {backend} from "../config";
 
-const prefix='http://localhost:8000'
-
 function CoursePage({info}) {
     /* info = {
         student_name - имя и фамилия пользователя
@@ -78,14 +76,14 @@ function CoursePage({info}) {
             {
                 !unauthorized && !no_access ?
                 <div className='right_side'>
-                    <img className='student_img' src={prefix+course.img_url} alt={course.name}/>
+                    <img className='student_img' src={backend.slice(0, -1)+course.img_url} alt={course.name}/>
                     <p className='student_name'>{info.name}</p>
                     <Link to={`/courses/${id}/tasks`} className='right_side_item'>Задания</Link>
                     <p className='right_side_item'>Общая таблица</p>
                     <p className='right_side_item'>Мои настройки</p>
                 </div> :
                 <div className='right_side'>
-                    <img className='student_img' src={prefix+course.img_url} alt={course.name}/>
+                    <img className='student_img' src={backend.slice(0, -1)+course.img_url} alt={course.name}/>
                     <p className='student_name'>{course.name}</p>
                 </div>
             }
