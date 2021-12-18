@@ -38,7 +38,7 @@ function CoursePage({info}) {
         }).catch(error => {
             axios({
                 method: "GET",
-                url: backend + "/api/course/?id=" + id,
+                url: backend + "api/course/?id=" + id,
             }).then(response => {
                 setCourse(response.data['course'])
                 setPosts(response.data['entries'])
@@ -69,6 +69,7 @@ function CoursePage({info}) {
     const unauthorized = (posts[0] === 'Unauthorized')
     const no_access = (posts[0] === 'No access')
 
+    console.log(course.img_url)
     return <div>
         <Header name={info.name}/>
         <div className='course_page'>
@@ -78,9 +79,7 @@ function CoursePage({info}) {
                 <div className='right_side'>
                     <img className='student_img' src={backend.slice(0, -1)+course.img_url} alt={course.name}/>
                     <p className='student_name'>{info.name}</p>
-                    <Link to={`/courses/${id}/tasks`} className='right_side_item'>Задания</Link>
-                    <p className='right_side_item'>Общая таблица</p>
-                    <p className='right_side_item'>Мои настройки</p>
+                    <Link to={`/courses/${id}/tasks`} className='right_side_item'>Задания на курсе</Link>
                 </div> :
                 <div className='right_side'>
                     <img className='student_img' src={backend.slice(0, -1)+course.img_url} alt={course.name}/>

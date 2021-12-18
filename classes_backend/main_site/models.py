@@ -38,3 +38,8 @@ class CourseEntry(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class AdditionalInfo(models.Model):
+    photo = models.ImageField(default='/media/resources/blank.png', verbose_name='photo')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)

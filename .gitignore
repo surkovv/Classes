@@ -4,5 +4,5 @@ classes/node_modules
 __pycache__/
 classes_backend/db.sqlite3
 classes_backend/migrations/
-
+classes/src/config.js
 

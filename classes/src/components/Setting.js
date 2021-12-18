@@ -1,5 +1,12 @@
-import React from "react";
+import React, {useState} from "react";
 import "../styles/Setting.css"
+
+function SettingAndValue({name, filler="", id}) {
+    console.log(filler)
+    const [value, setValue] = useState(filler);
+    const input = <Setting name={name} filler={value} onChange={e => setValue(e.target.value)} id={id} />;
+    return [value, input];
+}
 
 function Setting({name, filler=null, id, onChange}) {
     return <div className='setting'>
@@ -15,4 +22,4 @@ function PasswordSetting({name, id, onChange}) {
     </div>
 }
 
-export {Setting, PasswordSetting};
+export {Setting, PasswordSetting, SettingAndValue};

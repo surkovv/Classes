@@ -10,23 +10,20 @@ import Login from './Login'
 import Register from "./Register";
 import {backend} from "../config"
 
-
-function App(){
+function App() {
     const [name, setName] = useState(null)
 
-    useEffect(() => {
-        if (!window.localStorage.getItem('ACCESS')) {
-            return;
-        }
-        axios.get(backend + "api/current_user/", {
-            "headers": {
-                "Authorization": `Bearer ${window.localStorage.getItem('ACCESS')}`
-            }
-        }).then(response => {
-            if (response.data.id !== null)
-                setName(response.data.first_name + " " + response.data.last_name)
-        }).catch(error => {})
-    }, [])
+    if (!window.localStorage.getItem('ACCESS')) {
+        return;
+    }
+    axios.get(backend + "api/current_user/", {
+        "headers": {"Authorization": `Bearer ${window.localStorage.getItem('ACCESS')}`}
+    }).then(response => {
+        if (response.data.id !== null)
+            setName(response.data.first_name + " " + response.data.last_name)
+    }).catch(error => {})
+
+
     return (
 
         <Routes>
