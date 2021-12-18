@@ -28,11 +28,11 @@ function Header({name}) {
     }
 
     if (name === null) {
-        return <div className="header">
+        return (<div className="header">
             <Link className='title' to='/'>Classes</Link>
             <Link className='sign_up header_link' to='/register'>Регистрация</Link>
             <Link className='sign_in header_link' to='/login'>Вход</Link>
-        </div>
+        </div>)
     }
 
     return (<div className="header">
