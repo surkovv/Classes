@@ -110,6 +110,7 @@ function SettingsPage({info}) {
             })
             .then(res => {
               console.log(res.data);
+              window.location.update()
             })
             .catch(err => console.log(err))
     }
