@@ -25,7 +25,6 @@ function App() {
 
 
     return (
-
         <Routes>
             <Route path='/' element={<MainPage info={{name:name}}/>} />
             <Route path='/login' element={<Login/>}/>
