@@ -115,7 +115,7 @@ function SettingsPage({info}) {
             .catch(err => console.log(err))
     }
 
-    return <div>
+    return (<div>
         <Header name={info.name}/>
         <div className='settings_page'>
             <div className='left_side_settings'>
@@ -142,7 +142,7 @@ function SettingsPage({info}) {
                 <div className='button_right button' onClick={photoClick}>Изменить фото</div>
             </div>
         </div>
-    </div>
+    </div>)
     
 }
 

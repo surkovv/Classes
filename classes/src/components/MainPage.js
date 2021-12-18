@@ -17,7 +17,7 @@ function MainPage({info}) {
         })
     }, [])
 
-    return <div>
+    return (<div>
         <Header name={info.name}/>
         <div className="main_page">
             <p className='mp_title'>Курсы</p>
@@ -26,7 +26,7 @@ function MainPage({info}) {
             </div>
             <p className='mp_title'>Дополнительная информация</p>
         </div>
-    </div>
+    </div>)
 }
 
 export default MainPage;

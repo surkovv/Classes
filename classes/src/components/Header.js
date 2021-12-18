@@ -35,7 +35,7 @@ function Header({name}) {
         </div>
     }
 
-    return <div className="header">
+    return (<div className="header">
         <Link className='title' to='/'>Classes</Link>
         <Link className='header_name header_link' to='/settings'>
             {name}
@@ -45,7 +45,7 @@ function Header({name}) {
                 Выйти
             </span>
         </Link>
-    </div>
+    </div>)
 }
 
 export default Header;

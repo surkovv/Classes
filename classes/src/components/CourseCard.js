@@ -4,7 +4,7 @@ import "../styles/CourseCard.css"
 import {backend} from "../config";
 
 function CourseCard({info}) {
-    return <Link to={`/courses/${info.id}`}>
+    return (<Link to={`/courses/${info.id}`}>
     <div className='course_card'>
         <img className='course_symbol' src={backend.slice(0, -1) + info.img_url} alt={info.name}/>
         <div className='name_description_holder'>
@@ -12,7 +12,7 @@ function CourseCard({info}) {
             <p className='course_card_description'>{info.description}</p>
         </div>
     </div>
-    </Link>
+    </Link>)
 }
 
 export default CourseCard;

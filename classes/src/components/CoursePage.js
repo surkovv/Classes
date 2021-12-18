@@ -70,7 +70,7 @@ function CoursePage({info}) {
     const no_access = (posts[0] === 'No access')
 
     console.log(course.img_url)
-    return <div>
+    return (<div>
         <Header name={info.name}/>
         <div className='course_page'>
             {unauthorized ? unauthorized_leftside : no_access ? no_access_leftside : authorized_leftside}
@@ -87,7 +87,7 @@ function CoursePage({info}) {
                 </div>
             }
         </div>
-    </div>
+    </div>)
 }
 
 export default CoursePage;

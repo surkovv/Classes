@@ -51,7 +51,7 @@ function Login() {
         })
     }
 
-    return <div className="form_page">
+    return (<div className="form_page">
         <div className="form">
             <p className="mp_title">Авторизация</p>
             <Setting name="Логин" onChange={handleChange} id="username"/>
@@ -59,7 +59,7 @@ function Login() {
             <p className="error">{errorMessage}</p>
             <div className="button" onClick={handleClick}>Войти</div>
         </div>
-    </div>
+    </div>)
 }
 
 export default Login;

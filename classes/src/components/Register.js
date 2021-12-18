@@ -59,7 +59,7 @@ function Register() {
         })
     }
 
-    return <div className="form_page">
+    return (<div className="form_page">
             <div className="form">
                 <p className="mp_title">Регистрация</p>
                 <Setting name="Логин" id="username" onChange={handleChange}/>
@@ -71,7 +71,7 @@ function Register() {
                 <p className="error">{errorMessage}</p>
                 <div className="button" onClick={handleClick}>Register!</div>
             </div>
-        </div>
+        </div>)
 }
 
 export default Register;

@@ -36,7 +36,7 @@ function TasksPage({info}) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    return <div>
+    return (<div>
         <Header name={info.name}/>
         <div className='tasks_page'>
             <p className='mp_title'>{course.name}</p>
@@ -49,7 +49,7 @@ function TasksPage({info}) {
 
             </div>
         </div>
-    </div>
+    </div>)
     
 }
 
