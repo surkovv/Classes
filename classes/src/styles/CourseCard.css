@@ -1,21 +1,28 @@
 .course_card {
     display: grid;
     grid-template-columns: 1fr 4fr;
-    margin: 20px;
+    margin: 10px;
     height: 150px;
+    padding: 5px;
+}
+
+.course_card:hover {
+    background-color: #ffd7a3;
+    border-radius: 5px;
 }
 
 .course_symbol {
     align-self: center;
     grid-column: 1;
-    width: 100%;
+    width: 95%;
+    margin: 8px;
 }
 
 .name_description_holder {
-    margin: 10px;
+    margin: 5px;
     padding: 10px;
     grid-column: 2;
-    background-color: #C4C4C4;
+    background-color: #fdcb6e;
     border-radius: 10px;
 }
 

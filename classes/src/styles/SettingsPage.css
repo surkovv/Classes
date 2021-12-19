@@ -20,11 +20,10 @@
 }
 
 .button_left {
-    margin-left: 40%;
-    margin-right: 40%;
+    margin-left: 5em;
+    margin-right: 10px;
 }
 
 .button_right {
-    margin-left: 10%;
-    margin-right: 10%;
+    width: 100px;
 }

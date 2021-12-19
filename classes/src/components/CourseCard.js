@@ -1,14 +1,18 @@
 import React from "react";
+import {Link} from 'react-router-dom'
 import "../styles/CourseCard.css"
+import {backend} from "../config";
 
 function CourseCard({info}) {
-    return <div className='course_card'>
-        <img className='course_symbol' src='https://idproctor.mipt.ru/public/event/90/b3/08/8a2e5_0dfd.png?t=14909' />
+    return (<Link to={`/courses/${info.id}`}>
+    <div className='course_card'>
+        <img className='course_symbol' src={backend.slice(0, -1) + info.img_url} alt={info.name}/>
         <div className='name_description_holder'>
             <p className='course_card_name'>{info.name}</p>
             <p className='course_card_description'>{info.description}</p>
         </div>
     </div>
+    </Link>)
 }
 
 export default CourseCard;
